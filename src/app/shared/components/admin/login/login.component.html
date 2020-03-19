@@ -1,0 +1,21 @@
+<main>
+    <form [formGroup]="form" (ngSubmit)="submit">
+        <h2>Авторизоваться в панеле администратора</h2>
+        <div class="alert" *ngIf="error$ | async as error">{{error}}</div>
+        <p>Адрес электронной почты</p>
+        <input name="email" type="email" placeholder="Адрес электронной почты" formControlName="email" [ngClass]="{'is-invalid' : (form.get('email').invalid && form.get('email').touched), 'is-valid' : !form.get('email').invalid && form.get('email').touched}">
+        <div class="validation" *ngIf="form.get('email').invalid && form.get('email').touched">
+            <small class="text-danger" *ngIf="form.get('email').errors.required">Поле не может быть пустым</small>
+            <small class="text-danger" *ngIf="form.get('email').errors.email">Неправильная форма записи адреса электронной почты</small>
+        </div>
+        <p>Пароль</p>
+        <input name="password" type="password" placeholder="Пароль" formControlName="password" [ngClass]="{'is-invalid' : (form.get('password').invalid && form.get('password').touched), 'is-valid' : !form.get('password').invalid && form.get('password').touched}">
+        <div class="validation" *ngIf="form.get('password').invalid && form.get('password').touched">
+            <small class="text-danger" *ngIf="form.get('password').errors.required">Поле не может быть пустым</small>
+            <small class="text-danger" *ngIf="form.get('password').errors.minlength">Неккоректная длина ( {{form.get('password').errors.minlength.actualLength}} из {{form.get('password').errors.minlength.requiredLength}})</small>
+        </div>
+        <br>
+        <button (click)="submit()" [disabled]="form.invalid">Авторизоваться</button>
+    </form>
+</main>
+

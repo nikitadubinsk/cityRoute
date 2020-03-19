@@ -1,0 +1,33 @@
+<main>
+    <div class="form">
+        <div class="routeType">
+            <div class="routeTypeItem" [ngClass]="{'active': walkInTheCenterFlag}" (click)="changeRouteType(1)">
+                <i class="fas fa-walking"></i>
+                <p>Прогулки по центру</p>
+            </div>
+            <div class="routeTypeItem" [ngClass]="{'active': museumWalkFlag}" (click)="changeRouteType(2)">
+                <i class="fas fa-university"></i>
+                <p>Походы в музей</p>
+            </div>
+            <div class="routeTypeItem" [ngClass]="{'active': walkInTheParksFlag}" (click)="changeRouteType(3)">
+                <i class="fas fa-tree"></i>
+                <p>Прогулки по паркам</p>
+            </div>
+        </div>
+        <div class="routeDuration">
+            <form [formGroup]="form" (ngSubmit)="submit">
+                <h5>Продолжительность маршрута</h5>
+                <input type="range" min="1" max="3" step="1" value="2" formControlName="duration"> 
+                <div class="rangeRouteDuration">
+                    <p>Короткая<br><small *ngIf="walkInTheCenterFlag">до 1,5 часов</small><small *ngIf="museumWalkFlag">до 3 часов</small><small *ngIf="walkInTheParksFlag">до 2 часов</small></p>
+                    <p>Средняя<br><small *ngIf="walkInTheCenterFlag">до 2,5 часов</small><small *ngIf="museumWalkFlag">до 4 часов</small><small *ngIf="walkInTheParksFlag">до 3 часов</small></p>
+                    <p>Большая<br><small *ngIf="walkInTheCenterFlag">более 3 часов</small><small *ngIf="museumWalkFlag">более 5 часов</small><small *ngIf="walkInTheParksFlag">более 4 часов</small></p>
+                </div>
+                <button type="submit" (click)="submit()" name="button" [disabled]="form.invalid">Подобрать маршрут</button>
+            </form>
+        </div>
+    </div>
+</main>
+
+<app-main-page *ngIf="routeSelected"></app-main-page>
+

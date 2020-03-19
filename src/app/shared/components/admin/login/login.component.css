@@ -1,0 +1,84 @@
+main {
+    background: url(../../../../../assets/login.jpg) no-repeat center top / cover;
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+    padding: 25vh 30vw 25vh 30vw;
+}
+
+form {
+    background: white;
+    border-radius: 5px;
+    text-align: center;
+    padding: 20px;
+    min-height: 40vh;
+    box-sizing: border-box
+}
+
+h2 {
+    font-weight: 900;
+    margin-bottom: 15px;
+}
+
+input {
+    border: 1px solid #ccc;
+    padding: 5px;
+    width: 50%;
+    text-align: center;
+    border-radius: 2px;
+    box-sizing: border-box;
+}
+
+button {
+    color: white;
+    background: black;
+    border: 0px solid black;
+    width: 50%;
+    text-align: center;
+    font-weight: 900;
+    padding: 10px;
+    font-size: 20px;
+    margin-top: 2%;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+button:hover {
+    background: #333333;
+}
+
+button:disabled {
+    background: #808080;
+    cursor: normal;
+}
+
+p {
+    font-weight: 100;
+    margin-bottom: 3px;
+    margin-top: 7px;
+}
+
+.alert {
+    background: red;
+    border: 1px solid red;
+    color: white;
+    padding: 5px;
+    width: 50%;
+    margin-left: 25%;
+    margin-bottom: 10px;
+}
+
+.is-invalid {
+    border: 1px solid red;
+}
+
+.is-valid {
+    border: 1px solid green;
+}
+
+.validation {
+    font-style: italic;
+    font-weight: 100;
+    color: red;
+}

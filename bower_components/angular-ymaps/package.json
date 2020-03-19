@@ -1,0 +1,32 @@
+{
+  "author": "https://github.com/just-boris",
+  "name": "angular-ymaps",
+  "scripts": {
+    "prepare": "bower install",
+    "dev": "karma start --no-single-run",
+    "test": "grunt"
+  },
+  "version": "0.1.1",
+  "repository": "git@github.com:just-boris/angular-ymaps.git",
+  "dependencies": {},
+  "devDependencies": {
+    "bower": "^1.4.1",
+    "grunt": "^1.0.1",
+    "grunt-build-control": "^0.7.1",
+    "grunt-cli": "^1.2.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-uglify": "^3.1.0",
+    "grunt-karma": "^2.0.0",
+    "jasmine-core": "^2.3.4",
+    "karma": "^1.7.1",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-firefox-launcher": "^1.0.1",
+    "karma-html2js-preprocessor": "^1.1.0",
+    "karma-jasmine": "^1.1.0",
+    "node-markdown": "^0.1.1",
+    "phantomjs-prebuilt": "^2.1.15",
+    "underscore": "^1.8.3"
+  }
+}
