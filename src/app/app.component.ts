@@ -3,11 +3,12 @@ import * as firebase from "firebase/app";
 import "firebase/auth";
 
 export interface Sight {
-  name: string,
-  latitude: string,
-  longitude: string,
-  type: string
-
+  name?: string,
+  description?: string,
+  latitude?: string,
+  longitude?: string,
+  type?: string,
+  features?: string
 }
 
 @Component({
@@ -17,7 +18,7 @@ export interface Sight {
 })
 
 export class AppComponent {
-  title = 'cityRoute';
+  title = 'Путеводитель по городу';
 
   firebaseConfig = {
     apiKey: "AIzaSyAXejJG6v6XuUIFEICVOB2heP2nyTZVczE",

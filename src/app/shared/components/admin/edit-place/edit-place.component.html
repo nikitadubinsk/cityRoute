@@ -1,1 +1,29 @@
-<p>edit-place works!</p>
+<form [formGroup]="form" (ngSubmit)="submit">
+    <p>Тип места</p>
+    <select formControlName="type">
+        <option>Прогулка по центру города</option>
+        <option>Музей</option>
+        <option>Парк</option>
+    </select>
+    <p>Название места</p>
+    <input type="name" formControlName="name">
+    <p>Описание места</p>
+    <textarea formControlName="description"></textarea>
+    <h4>Географические координаты</h4>
+    <p>Широта</p>
+    <input type="latitude" formControlName="latitude">
+    <p>Долгота</p>
+    <input type="longitude" formControlName="longitude">
+    <p>Дополнительные особенности</p>
+    <select formControlName="features">
+        <!-- <option *ngIf="form.value.type='Прогулка по центру города'">Место для фотографии</option> -->
+        <!-- <option *ngIf="form.value.type='Прогулка по центру города'">Историческое здание</option>
+        <option *ngIf="form.value.type='Парк'">Природный парк</option>
+        <option *ngIf="form.value.type='Парк'">Рукотворный парк</option> -->
+        <option value="placeForPhoto">Место для фотографии</option>
+        <option value="historicalPlace">Историческое здание</option>
+        <option value="naturePark">Природный парк</option>
+        <option value="artificialPark">Рукотворный парк</option>
+    </select>
+    <button (click)="submit()" [disabled]="form.invalid">Сохранить место</button>
+</form>

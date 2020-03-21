@@ -14,6 +14,7 @@ import { MainPageComponent } from './shared/components/main-page/main-page.compo
 import { FormComponent } from './shared/components/form/form.component';
 import { RouteComponent } from './shared/components/route/route.component';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
+import { PlacemarkComponent } from './shared/components/placemark/placemark.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { NotFoundComponent } from './shared/components/not-found/not-found.compo
     MainPageComponent,
     FormComponent,
     RouteComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    PlacemarkComponent
   ],
   imports: [
     BrowserModule,

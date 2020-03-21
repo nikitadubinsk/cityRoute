@@ -19,9 +19,9 @@
                 <h5>Продолжительность маршрута</h5>
                 <input type="range" min="1" max="3" step="1" value="2" formControlName="duration"> 
                 <div class="rangeRouteDuration">
-                    <p>Короткая<br><small *ngIf="walkInTheCenterFlag">до 1,5 часов</small><small *ngIf="museumWalkFlag">до 3 часов</small><small *ngIf="walkInTheParksFlag">до 2 часов</small></p>
-                    <p>Средняя<br><small *ngIf="walkInTheCenterFlag">до 2,5 часов</small><small *ngIf="museumWalkFlag">до 4 часов</small><small *ngIf="walkInTheParksFlag">до 3 часов</small></p>
-                    <p>Большая<br><small *ngIf="walkInTheCenterFlag">более 3 часов</small><small *ngIf="museumWalkFlag">более 5 часов</small><small *ngIf="walkInTheParksFlag">более 4 часов</small></p>
+                    <p>Короткая<br><small *ngIf="walkInTheCenterFlag">около 5 мест</small><small *ngIf="museumWalkFlag">1 музей</small><small *ngIf="walkInTheParksFlag">1 парк</small></p>
+                    <p>Средняя<br><small *ngIf="walkInTheCenterFlag">около 10 мест</small><small *ngIf="museumWalkFlag">2 музея</small><small *ngIf="walkInTheParksFlag">2 парка</small></p>
+                    <p>Большая<br><small *ngIf="walkInTheCenterFlag">около 15 мест</small><small *ngIf="museumWalkFlag">3 музея</small><small *ngIf="walkInTheParksFlag">3 парка</small></p>
                 </div>
                 <button type="submit" (click)="submit()" name="button" [disabled]="form.invalid">Подобрать маршрут</button>
             </form>
@@ -29,5 +29,196 @@
     </div>
 </main>
 
-<app-main-page *ngIf="routeSelected"></app-main-page>
+<div *ngIf="routeSelected" class="routeMain">
+    <div class="container">
+        <angular-yandex-map *ngIf="walkInTheCenterFlag || museumWalkFlag" [center]="[sightForMap[0].latitude, sightForMap[0].longitude]" [zoom]="15">
+          <angular-yandex-placemark *ngIf="sightForMap.length > 0" [geometry]="[sightForMap[0].latitude, sightForMap[0].longitude]" [properties]="{iconContent: '1'}" (yaclick)="openCard(1)"></angular-yandex-placemark>
+          <angular-yandex-placemark *ngIf="sightForMap.length > 1" [geometry]="[sightForMap[1].latitude, sightForMap[1].longitude]" [properties]="{iconContent: '2'}" (yaclick)="openCard(2)"></angular-yandex-placemark>
+          <angular-yandex-placemark *ngIf="sightForMap.length > 2" [geometry]="[sightForMap[2].latitude, sightForMap[2].longitude]" [properties]="{iconContent: '3'}" (yaclick)="openCard(3)"></angular-yandex-placemark>
+          <angular-yandex-placemark *ngIf="sightForMap.length > 3" [geometry]="[sightForMap[3].latitude, sightForMap[3].longitude]" [properties]="{iconContent: '4'}" (yaclick)="openCard(4)"></angular-yandex-placemark>
+          <angular-yandex-placemark *ngIf="sightForMap.length > 4" [geometry]="[sightForMap[4].latitude, sightForMap[4].longitude]" [properties]="{iconContent: '5'}" (yaclick)="openCard(5)"></angular-yandex-placemark>
+          <angular-yandex-placemark *ngIf="duration>1 && sightForMap.length > 5" [geometry]="[sightForMap[5].latitude, sightForMap[5].longitude]" [properties]="{iconContent: '6'}" (yaclick)="openCard(6)"></angular-yandex-placemark>
+          <angular-yandex-placemark *ngIf="duration>1 && sightForMap.length > 6" [geometry]="[sightForMap[6].latitude, sightForMap[6].longitude]" [properties]="{iconContent: '7'}" (yaclick)="openCard(7)"></angular-yandex-placemark>
+          <angular-yandex-placemark *ngIf="duration>1 && sightForMap.length > 7" [geometry]="[sightForMap[7].latitude, sightForMap[7].longitude]" [properties]="{iconContent: '8'}" (yaclick)="openCard(8)"></angular-yandex-placemark>
+          <angular-yandex-placemark *ngIf="duration>1 && sightForMap.length > 8" [geometry]="[sightForMap[8].latitude, sightForMap[8].longitude]" [properties]="{iconContent: '9'}" (yaclick)="openCard(9)"></angular-yandex-placemark>
+          <angular-yandex-placemark *ngIf="duration>1 && sightForMap.length > 9" [geometry]="[sightForMap[9].latitude, sightForMap[9].longitude]" [properties]="{iconContent: '10'}" (yaclick)="openCard(10)"></angular-yandex-placemark>
+          <angular-yandex-placemark *ngIf="duration>2 && sightForMap.length > 10" [geometry]="[sightForMap[10].latitude, sightForMap[10].longitude]" [properties]="{iconContent: '11'}" (yaclick)="openCard(11)"></angular-yandex-placemark>
+          <angular-yandex-placemark *ngIf="duration>2 && sightForMap.length > 11" [geometry]="[sightForMap[11].latitude, sightForMap[11].longitude]" [properties]="{iconContent: '12'}" (yaclick)="openCard(12)"></angular-yandex-placemark>
+          <angular-yandex-placemark *ngIf="duration>2 && sightForMap.length > 12" [geometry]="[sightForMap[12].latitude, sightForMap[12].longitude]" [properties]="{iconContent: '13'}" (yaclick)="openCard(13)"></angular-yandex-placemark>
+          <angular-yandex-placemark *ngIf="duration>2 && sightForMap.length > 13" [geometry]="[sightForMap[13].latitude, sightForMap[13].longitude]" [properties]="{iconContent: '14'}" (yaclick)="openCard(14)"></angular-yandex-placemark>
+          <angular-yandex-placemark *ngIf="duration>2 && sightForMap.length > 14" [geometry]="[sightForMap[14].latitude, sightForMap[14].longitude]" [properties]="{iconContent: '15'}" (yaclick)="openCard(15)"></angular-yandex-placemark>
+
+        </angular-yandex-map>
+
+        <angular-yandex-map *ngIf="walkInTheParksFlag" [center]="[sightForMap[0].latitude, sightForMap[0].longitude]" [zoom]="12">
+            <angular-yandex-geoobject *ngIf="sightForMap.length > 0" [feature]="{geometry: {type: 'Circle', coordinates: [sightForMap[0].latitude, sightForMap[0].longitude], radius: 500}}" [options]="options" ></angular-yandex-geoobject>
+            <angular-yandex-placemark *ngIf="sightForMap.length > 0" [geometry]="[sightForMap[0].latitude, sightForMap[0].longitude]" [properties]="{iconContent: '1'}"></angular-yandex-placemark>
+            <angular-yandex-geoobject *ngIf="sightForMap.length > 1" [feature]="{geometry: {type: 'Circle', coordinates: [sightForMap[1].latitude, sightForMap[1].longitude], radius: 500}}" [options]="options" ></angular-yandex-geoobject>
+            <angular-yandex-placemark *ngIf="sightForMap.length > 1" [geometry]="[sightForMap[1].latitude, sightForMap[1].longitude]" [properties]="{iconContent: '2'}"></angular-yandex-placemark>
+            <angular-yandex-geoobject *ngIf="sightForMap.length > 2" [feature]="{geometry: {type: 'Circle', coordinates: [sightForMap[2].latitude, sightForMap[2].longitude], radius: 500}}" [options]="options" ></angular-yandex-geoobject>
+            <angular-yandex-placemark *ngIf="sightForMap.length > 2" [geometry]="[sightForMap[2].latitude, sightForMap[2].longitude]" [properties]="{iconContent: '3'}"></angular-yandex-placemark>
+
+
+        </angular-yandex-map> 
+    </div>
+
+
+    <div class="cardDiv">
+        <div class="card" *ngIf="sightForMap.length > 0">
+            <div class="cardMain">
+                <i class="fa fa-user" aria-hidden="true" *ngIf="sightForMap[0].features == 'artificialPark'" data-title="Рукотворный парк"></i>
+                <i class="fa fa-tree" aria-hidden="true" *ngIf="sightForMap[0].features == 'naturePark'" data-title="Природный парк"></i>
+                <i class="fa fa-camera" aria-hidden="true" *ngIf="sightForMap[0].features == 'placeForPhoto'" data-title="Место для фото"></i>
+                <i class="fa fa-home" aria-hidden="true" *ngIf="sightForMap[0].features == 'historicalPlace'" data-title="Историческое место"></i>
+                <h2>1. {{sightForMap[0].name}}</h2>
+                <p>{{sightForMap[0].description}}</p>
+            </div>
+        </div>
+        <small *ngIf="sightForMap.length > 1" class="travelTime"><i class="fas fa-walking"></i>{{time[0]}}'</small>
+        <div class="card" *ngIf="sightForMap.length > 1">
+            <div class="cardMain">
+                <i class="fa fa-user" aria-hidden="true" *ngIf="sightForMap[1].features == 'artificialPark'" data-title="Рукотворный парк"></i>
+                <i class="fa fa-tree" aria-hidden="true" *ngIf="sightForMap[1].features == 'naturePark'" data-title="Природный парк"></i>
+                <i class="fa fa-camera" aria-hidden="true" *ngIf="sightForMap[1].features == 'placeForPhoto'" data-title="Место для фото"></i>
+                <i class="fa fa-home" aria-hidden="true" *ngIf="sightForMap[1].features == 'historicalPlace'" data-title="Историческое место"></i>
+                <h2>2. {{sightForMap[1].name}}</h2>
+                <p>{{sightForMap[1].description}}</p>
+            </div>
+        </div>
+        <small *ngIf="sightForMap.length > 2" class="travelTime"><i class="fas fa-walking"></i>{{time[1]}}'</small>
+        <div class="card" *ngIf="sightForMap.length > 2">
+            <div class="cardMain">
+                <i class="fa fa-user" aria-hidden="true" *ngIf="sightForMap[2].features == 'artificialPark'" data-title="Рукотворный парк"></i>
+                <i class="fa fa-tree" aria-hidden="true" *ngIf="sightForMap[2].features == 'naturePark'" data-title="Природный парк"></i>
+                <i class="fa fa-camera" aria-hidden="true" *ngIf="sightForMap[2].features == 'placeForPhoto'" data-title="Место для фото"></i>
+                <i class="fa fa-home" aria-hidden="true" *ngIf="sightForMap[2].features == 'historicalPlace'" data-title="Историческое место"></i>
+                <h2>3. {{sightForMap[2].name}}</h2>
+                <p>{{sightForMap[2].description}}</p>
+            </div>
+        </div>
+        <small *ngIf="sightForMap.length > 3" class="travelTime"><i class="fas fa-walking"></i>{{time[2]}}'</small>
+        <div class="card" *ngIf="sightForMap.length > 3">
+            <div class="cardMain">
+                <i class="fa fa-camera" aria-hidden="true" *ngIf="sightForMap[3].features == 'placeForPhoto'" data-title="Место для фото"></i>
+                <i class="fa fa-home" aria-hidden="true" *ngIf="sightForMap[3].features == 'historicalPlace'" data-title="Историческое место"></i>
+                <h2>4. {{sightForMap[3].name}}</h2>
+                <p>{{sightForMap[3].description}}</p>
+            </div>
+        </div>
+        <small *ngIf="sightForMap.length > 4" class="travelTime"><i class="fas fa-walking"></i>{{time[3]}}'</small>
+        <div class="card" *ngIf="sightForMap.length > 4">
+            <div class="cardMain">
+                <i class="fa fa-camera" aria-hidden="true" *ngIf="sightForMap[4].features == 'placeForPhoto'" data-title="Место для фото"></i>
+                <i class="fa fa-home" aria-hidden="true" *ngIf="sightForMap[4].features == 'historicalPlace'" data-title="Историческое место"></i>
+                <h2>5. {{sightForMap[4].name}}</h2>
+                <p>{{sightForMap[4].description}}</p>
+            </div>
+        </div>
+
+        <!-- Продолжительность 2 -->
+
+        <small *ngIf="duration>1 && sightForMap.length > 5" class="travelTime"><i class="fas fa-walking"></i>{{time[4]}}'</small>
+        <div class="card" *ngIf=" duration>1 && sightForMap.length > 5">
+            <div class="cardMain">
+                <i class="fa fa-camera" aria-hidden="true" *ngIf="sightForMap[5].features == 'placeForPhoto'" data-title="Место для фото"></i>
+                <i class="fa fa-home" aria-hidden="true" *ngIf="sightForMap[5].features == 'historicalPlace'" data-title="Историческое место"></i>
+                <h2>6. {{sightForMap[5].name}}</h2>
+                <p>{{sightForMap[5].description}}</p>
+            </div>
+        </div>
+        <small *ngIf="duration>1 && sightForMap.length > 6" class="travelTime"><i class="fas fa-walking"></i>{{time[5]}}'</small>
+        <div class="card" *ngIf=" duration>1 && sightForMap.length > 6">
+            <div class="cardMain">
+                <i class="fa fa-camera" aria-hidden="true" *ngIf="sightForMap[6].features == 'placeForPhoto'" data-title="Место для фото"></i>
+                <i class="fa fa-home" aria-hidden="true" *ngIf="sightForMap[6].features == 'historicalPlace'" data-title="Историческое место"></i>
+                <h2>7. {{sightForMap[6].name}}</h2>
+                <p>{{sightForMap[6].description}}</p>
+            </div>
+        </div>
+        <small *ngIf="duration>1 && sightForMap.length > 7" class="travelTime"><i class="fas fa-walking"></i>{{time[6]}}'</small>
+        <div class="card" *ngIf=" duration>1 && sightForMap.length > 7">
+            <div class="cardMain">
+                <i class="fa fa-camera" aria-hidden="true" *ngIf="sightForMap[7].features == 'placeForPhoto'" data-title="Место для фото"></i>
+                <i class="fa fa-home" aria-hidden="true" *ngIf="sightForMap[7].features == 'historicalPlace'" data-title="Историческое место"></i>
+                <h2>8. {{sightForMap[7].name}}</h2>
+                <p>{{sightForMap[7].description}}</p>
+            </div>
+        </div>
+        <small *ngIf="duration>1 && sightForMap.length > 8" class="travelTime"><i class="fas fa-walking"></i>{{time[7]}}'</small>
+        <div class="card" *ngIf=" duration>1 && sightForMap.length > 8">
+            <div class="cardMain">
+                <i class="fa fa-camera" aria-hidden="true" *ngIf="sightForMap[8].features == 'placeForPhoto'" data-title="Место для фото"></i>
+                <i class="fa fa-home" aria-hidden="true" *ngIf="sightForMap[8].features == 'historicalPlace'" data-title="Историческое место"></i>
+                <h2>9. {{sightForMap[8].name}}</h2>
+                <p>{{sightForMap[8].description}}</p>
+            </div>
+        </div>
+        <small *ngIf="duration>1 && sightForMap.length > 9" class="travelTime"><i class="fas fa-walking"></i>{{time[8]}}'</small>
+        <div class="card" *ngIf=" duration>1 && sightForMap.length > 9">
+            <div class="cardMain">
+                <i class="fa fa-camera" aria-hidden="true" *ngIf="sightForMap[9].features == 'placeForPhoto'" data-title="Место для фото"></i>
+                <i class="fa fa-home" aria-hidden="true" *ngIf="sightForMap[9].features == 'historicalPlace'" data-title="Историческое место"></i>
+                <h2>10. {{sightForMap[9].name}}</h2>
+                <p>{{sightForMap[9].description}}</p>
+            </div>
+        </div>
+
+        <!-- Продолжительность 3 -->
+
+        <small *ngIf="duration>2 && sightForMap.length > 10" class="travelTime"><i class="fas fa-walking"></i>{{time[9]}}'</small>
+        <div class="card" *ngIf=" duration>2 && sightForMap.length > 10">
+            <div class="cardMain">
+                <i class="fa fa-camera" aria-hidden="true" *ngIf="sightForMap[10].features == 'placeForPhoto'" data-title="Место для фото"></i>
+                <i class="fa fa-home" aria-hidden="true" *ngIf="sightForMap[10].features == 'historicalPlace'" data-title="Историческое место"></i>
+                <h2>11. {{sightForMap[10].name}}</h2>
+                <p>{{sightForMap[10].description}}</p>
+            </div>
+        </div>
+        <small *ngIf="duration>2 && sightForMap.length > 11" class="travelTime"><i class="fas fa-walking"></i>{{time[10]}}'</small>
+        <div class="card" *ngIf=" duration>2 && sightForMap.length > 11">
+            <div class="cardMain">
+                <i class="fa fa-camera" aria-hidden="true" *ngIf="sightForMap[11].features == 'placeForPhoto'" data-title="Место для фото"></i>
+                <i class="fa fa-home" aria-hidden="true" *ngIf="sightForMap[11].features == 'historicalPlace'" data-title="Историческое место"></i>
+                <h2>12. {{sightForMap[11].name}}</h2>
+                <p>{{sightForMap[11].description}}</p>
+            </div>
+        </div>
+        <small *ngIf="duration>2 && sightForMap.length > 12" class="travelTime"><i class="fas fa-walking"></i>{{time[11]}}'</small>
+        <div class="card" *ngIf=" duration>2 && sightForMap.length > 12">
+            <div class="cardMain">
+                <i class="fa fa-camera" aria-hidden="true" *ngIf="sightForMap[12].features == 'placeForPhoto'" data-title="Место для фото"></i>
+                <i class="fa fa-home" aria-hidden="true" *ngIf="sightForMap[12].features == 'historicalPlace'" data-title="Историческое место"></i>
+                <h2>13. {{sightForMap[12].name}}</h2>
+                <p>{{sightForMap[12].description}}</p>
+            </div>
+        </div>
+        <small *ngIf="duration>2 && sightForMap.length > 13" class="travelTime"><i class="fas fa-walking"></i>{{time[12]}}'</small>
+        <div class="card" *ngIf=" duration>2 && sightForMap.length > 13">
+            <div class="cardMain">
+                <i class="fa fa-camera" aria-hidden="true" *ngIf="sightForMap[13].features == 'placeForPhoto'" data-title="Место для фото"></i>
+                <i class="fa fa-home" aria-hidden="true" *ngIf="sightForMap[13].features == 'historicalPlace'" data-title="Историческое место"></i>
+                <h2>14. {{sightForMap[13].name}}</h2>
+                <p>{{sightForMap[13].description}}</p>
+            </div>
+        </div>
+        <small *ngIf="duration>2 && sightForMap.length > 14" class="travelTime"><i class="fas fa-walking"></i>{{time[13]}}'</small>
+        <div class="card" *ngIf=" duration>2 && sightForMap.length > 14">
+            <div class="cardMain">
+                <i class="fa fa-camera" aria-hidden="true" *ngIf="sightForMap[14].features == 'placeForPhoto'" data-title="Место для фото"></i>
+                <i class="fa fa-home" aria-hidden="true" *ngIf="sightForMap[14].features == 'historicalPlace'" data-title="Историческое место"></i>
+                <h2>15. {{sightForMap[14].name}}</h2>
+                <p>{{sightForMap[15].description}}</p>
+            </div>
+        </div>
+        <p>Всего {{allDuration}}'</p>
+    </div>
+    
+
+
+
+
+
+
+
+</div>
 
